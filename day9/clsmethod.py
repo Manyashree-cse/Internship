@@ -16,10 +16,13 @@ class Student:
         print("Name:",self.name)
         print("roll_no:",self.roll_no)
         print("college:",Student.college_name)
-std1=Student("manya",20)
+# std1=Student("manya",20)
 # std1.display()
 
+# std1=Student("manya",20)
 # Student.change_college("jnv")
 # std1.display()
 
-print(std1.is_pass(38))
+# print(std1.is_pass(38))
+
+print(Student.is_pass(38))
