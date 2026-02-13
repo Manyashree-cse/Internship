@@ -1,19 +1,19 @@
-class Organization:
-    def __init__(self, company):
-        self.company=company
+class Animal:
+    def __init__(self, category):
+        self.category=category
 
-class Department(Organization):
-    def __init__(self, company, dept):
-        self.dept=dept
-        super().__init__(company)
+class Mammal(Animal):
+    def __init__(self, category, temperature):
+        self.temperature=temperature
+        super().__init__(category)
 
-class Employee(Department):
-    def __init__(self, company, dept, emp_name):
-        self.emp_name=emp_name
-        super().__init__(company, dept)
+class Dog(Mammal):
+    def __init__(self, category, temperature, breed):
+        self.breed=breed
+        super().__init__(category,temperature)
 
-    def get_details(self):
-        return f"{self.emp_name} works in {self.dept} department at {self.company}"
+    def describe(self):
+        return f"This is a {self.breed}. It is a {self.temperature} {self.category}."
 
-e1 = Employee("Innotech", "HR", "Meera")
-print(e1.get_details())
+d1 = Dog("Animal", "Warm-blooded", "Husky")
+print( d1.describe())

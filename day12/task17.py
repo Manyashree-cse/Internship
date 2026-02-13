@@ -1,15 +1,13 @@
-class Developer:
-    def code(self):
-        return f"{self.name} is coding"
+class Flyer:
+    def fly(self, height):
+        return f"Flying at {height} meters"
 
-class Designer:
-    def design(self):
-        return f"{self.name} is designing"
+class Camera:
+    def take_photo(self, location):
+        return f"Photo taken at {location}"
 
-class HybridWorker(Developer, Designer):
-    def __init__(self, name):
-        self.name=name
-        super().__init__()
+class Drone(Flyer, Camera):
+    pass
 
-h1 = HybridWorker("Ava")
-print( h1.code())
+d1 = Drone()
+print( d1.fly(50))

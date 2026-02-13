@@ -1,13 +1,13 @@
-class Flyer:
-    def fly(self, height):
-        return f"Flying at {height} meters"
+class Book:
+    def read_page(self, page):
+        return f"Reading page {page}"
 
-class Camera:
-    def take_photo(self, location):
-        return f"Photo taken at {location}"
+class BatteryPowered:
+    def battery_status(self, level):
+        return f"Battery at {level}%"
 
-class Drone(Flyer, Camera):
+class EBookReader(Book, BatteryPowered):
     pass
 
-d1 = Drone()
-print( d1.fly(50))
+e1 = EBookReader()
+print( e1.read_page(10))

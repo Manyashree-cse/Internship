@@ -1,13 +1,15 @@
-class Speaker:
-    def speak(self, message):
-        return f"Speaking: {message}"
+class Employee:
+    def __init__(self, name, base_salary):
+        self.name=name
+        self.base_salary=base_salary
 
-class Scheduler:
-    def schedule(self, task, time):
-        return f"Scheduled {task} at {time}"
+class Developer(Employee):
+    def __init__(self, name, base_salary, bonus):
+        self.bonus=bonus
+        super().__init__(name,base_salary)
 
-class SmartAssistant(Speaker, Scheduler):
-        pass
+    def calculate_salary(self):
+        return f"{self.base_salary+self.bonus}"
 
-s1 = SmartAssistant()
-print( s1.speak("Hi"))
+d1 = Developer("A", 40000, 5000)
+print( d1.calculate_salary())

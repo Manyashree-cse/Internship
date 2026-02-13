@@ -1,19 +1,19 @@
-class System:
-    def __init__(self, os_type):
-        self.os_type=os_type
+class Platform:
+    def __init__(self, name):
+        self.name=name
 
-class SmartSystem(System):
-    def __init__(self, os_type, connectivity):
-        self.connectivity=connectivity
-        super().__init__(os_type)
+class Course(Platform):
+    def __init__(self, name, title):
+        self.title=title
+        super().__init__(name)
 
-class SmartHome(SmartSystem):
-    def __init__(self, os_type, connectivity, owner):
-        self.owner=owner
-        super().__init__(os_type,connectivity)
+class Module(Course):
+    def __init__(self, name, title, module_name):
+        self.module_name=module_name
+        super().__init__(name, title)
 
-    def status(self):
-        return f"SmartHome of {self.owner} is running {self.os_type} and is currently {self.connectivity}."
+    def full_title(self):
+        return f"'{self.module_name}' is a module in '{self.title}' course on {self.name}"
 
-sh1 = SmartHome("Linux", "Online", "Ravi")
-print( sh1.status())
+m1 = Module("Udemy", "Python Bootcamp", "Functions")
+print( m1.full_title())

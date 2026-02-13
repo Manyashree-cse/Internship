@@ -1,19 +1,19 @@
-class Publisher:
-    def __init__(self, publisher):
-        self.publisher=publisher
+class System:
+    def __init__(self, os_type):
+        self.os_type=os_type
 
-class Series(Publisher):
-    def __init__(self, publisher, series_name):
-        self.series_name=series_name
-        super().__init__(publisher)
+class SmartSystem(System):
+    def __init__(self, os_type, connectivity):
+        self.connectivity=connectivity
+        super().__init__(os_type)
 
-class Book(Series):
-    def __init__(self, publisher,series_name , title):
-        self. title= title
-        super().__init__(publisher,series_name)
+class SmartHome(SmartSystem):
+    def __init__(self, os_type, connectivity, owner):
+        self.owner=owner
+        super().__init__(os_type,connectivity)
 
-    def info(self):
-        return f"{self.title} is part of the {self.series_name} series published by {self.publisher}."
+    def status(self):
+        return f"SmartHome of {self.owner} is running {self.os_type} and is currently {self.connectivity}."
 
-b1 = Book("Harper", "Earth Saga", "Final Planet")
-print( b1.info())
+sh1 = SmartHome("Linux", "Online", "Ravi")
+print( sh1.status())

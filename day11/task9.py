@@ -1,23 +1,25 @@
-class Book:
-    def __init__(self, title, author):
-        self.title=title
-        self.author=author
+class Product:
+    def __init__(self, name, **kwargs):
+        self.name=name
+        super().__init__(**kwargs)
 
-class Novel(Book):
-    def __init__(self, title, author, genre):
-        self.genre=genre
-        super().__init__(title, author)
+class DigitalProduct(Product):
+    def __init__(self, name, size, **kwargs):
+        self.size=size
+        Product.__init__(self,name)
+
+class PhysicalProduct(Product):
+    def __init__(self, name, weight, **kwargs):
+        self.weight=weight
+        Product.__init__(self,name)
+
+class HybridProduct(DigitalProduct, PhysicalProduct):
+    def __init__(self, name, size, weight):
+        DigitalProduct.__init__(self,name,size)
+        PhysicalProduct.__init__(self,name,weight)
 
     def details(self):
-        return f"'{self.title}' by {self.author} is a {self.genre} novel."
+        return f"{self.name} includes {self.size} digital files and weighs {self.weight}."
 
-class Magazine(Book):
-    def __init__(self, title, author, issue):
-        self.issue=issue
-        super().__init__(title, author)
-
-    def details(self):
-        return f"'{self.title}' by {self.author}, Issue: {self.issue}."
-
-n1 = Novel("The Alchemist", "Paulo Coelho", "Fiction")
-print( n1.details())
+hp1 = HybridProduct("Python Mastery", "2GB", "1kg")
+print( hp1.details())

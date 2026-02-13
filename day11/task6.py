@@ -1,25 +1,20 @@
-class Person:
-    def __init__(self, name, age):
-        self.name=name
-        self.age=age
+class Device:
+    def __init__(self, brand):
+        self.brand=brand
 
-class Student(Person):
-    def __init__(self, name, age, grade):
-        self.grade=grade
-        super().__init__(name,age)
+class VoiceControl(Device):
+    def voice_activate(self):
+        return "voicecontrol"
 
-    def get_details(self):
-        return f"{self.name} is {self.age} years old and studies in {self.grade} grade."
+class AppControl(Device):
+    def app_activate(self):
+        return "appcontrol"
 
-class Teacher(Person):
-    def __init__(self, name, age, subject):
-        self.subject=subject
-        super().__init__(name,age)
+class SmartSpeaker(VoiceControl, AppControl):
+    def __init__(self,brand):
+        super().__init__(brand)
+    def control_methods(self):
+        return f"{self.brand} can be controlled via voice and app."
 
-    def get_details(self):
-        return f"{self.name} is {self.age} years old and teaches {self.subject}."
-
-s1 = Student("Asha", 15, "10th")
-print( s1.get_details())
-s2=Teacher("Mr. Roy",40,"Mathematics")
-print( s2.get_details())
+s1 = SmartSpeaker("Echo")
+print( s1.control_methods())

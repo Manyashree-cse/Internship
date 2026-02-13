@@ -1,23 +1,31 @@
-class Vehicle:
-    def __init__(self, brand, model):
-        self.brand=brand
-        self.model=model
+class Person:
+    def __init__(self, name, **kwargs):
+        self.name=name
+        super().__init__(**kwargs)
 
-class Car(Vehicle):
-    def __init__(self, brand, model, doors):
-        self.doors=doors
-        super().__init__(brand,model)
+class Faculty(Person):
+    def __init__(self, name, subject, **kwargs):
+        self.subject=subject
+        Person.__init__(self,name)
 
-    def description(self):
-            return f"{self.brand} {self.model} with {self.doors} doors."
+    def teach(self):
+        return "Faculty Teach"
 
-class Bike(Vehicle):
-    def __init__(self, brand, model, engine):
-        self.engine=engine
-        super().__init__(brand,model)
+class Staff(Person):
+    def __init__(self, name, department, **kwargs):
+        self.department=department
+        Person.__init__(self,name)
 
-    def description(self):
-        return f"{self.brand} {self.model} with {self.engine} engine."
+    def work(self):
+        return "Staff work"
 
-c1 = Car("Toyota", "Camry", 4)
-print( c1.description())
+class Administrator(Faculty, Staff):
+    def __init__(self, name, subject, department):
+        Faculty.__init__(self,name, subject)
+        Staff.__init__(self,name, department)
+
+    def profile_data(self):
+        return f"{self.name} teaches {self.subject} and works in {self.department} department."
+
+a1 = Administrator("Rakesh", "Math", "Operations")
+print( a1.profile_data())

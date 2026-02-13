@@ -1,13 +1,13 @@
-class Book:
-    def read_page(self, page):
-        return f"Reading page {page}"
+class Speaker:
+    def speak(self, message):
+        return f"Speaking: {message}"
 
-class BatteryPowered:
-    def battery_status(self, level):
-        return f"Battery at {level}%"
+class Scheduler:
+    def schedule(self, task, time):
+        return f"Scheduled {task} at {time}"
 
-class EBookReader(Book, BatteryPowered):
-    pass
+class SmartAssistant(Speaker, Scheduler):
+        pass
 
-e1 = EBookReader()
-print( e1.read_page(10))
+s1 = SmartAssistant()
+print( s1.speak("Hi"))

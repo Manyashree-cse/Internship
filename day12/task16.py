@@ -1,13 +1,15 @@
-class Phone:
-    def make_call(self, number):
-        return f"Calling {number}"
+class Developer:
+    def code(self):
+        return f"{self.name} is coding"
 
-class MusicPlayer:
-    def play_song(self, song):
-        return f"Playing {song}"
+class Designer:
+    def design(self):
+        return f"{self.name} is designing"
 
-class SmartDevice(Phone, MusicPlayer):
-    pass
+class HybridWorker(Developer, Designer):
+    def __init__(self, name):
+        self.name=name
+        super().__init__()
 
-s1 = SmartDevice()
-print( s1.make_call("123"))
+h1 = HybridWorker("Ava")
+print( h1.code())

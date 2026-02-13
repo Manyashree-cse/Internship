@@ -1,23 +1,22 @@
-class Person:
-    def __init__(self, name, emp_id):
+class User:
+    def __init__(self, name, **kwargs):
         self.name=name
-        self.emp_id=emp_id
+        super().__init__(**kwargs)
+class Driver(User):
+    def __init__(self, name, car, **kwargs):
+        self.car=car
+        User.__init__(self,name)
+class Rider(User):
+    def __init__(self, name, pickup_location, **kwargs):
+        self.pickup_location=pickup_location
+        User.__init__(self,name)
+class Trip(Driver, Rider):
+    def __init__(self, name, car, pickup_location):
+        Driver.__init__(self,name,car)
+        Rider.__init__(self,name,pickup_location)
 
-class Manager(Person):
-    def __init__(self, name, emp_id, department):
-        self.department=department
-        super().__init__(name,emp_id)
+    def summary(self):
+        return f"{self.name} will pick up the rider from {self.pickup_location} using {self.car}."
 
-    def get_profile_data(self):
-        return f"{self.name} (ID: {self.emp_id}) is a manager of {self.department} department."
-
-class Engineer(Person):
-    def __init__(self, name, emp_id, specialization):
-        self.specialization=specialization
-        super().__init__(name,emp_id)
-
-    def get_profile_data(self):
-        return f"{self.name} (ID: {self.emp_id}) is a {self.specialization.lower()} engineer."
-
-m1 = Manager("Kavita", 101, "HR")
-print( m1.get_profile_data())
+t1 = Trip("Amit", "Honda City", "Sector 21")
+print( t1.summary())

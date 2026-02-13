@@ -1,19 +1,19 @@
-class Animal:
-    def __init__(self, category):
-        self.category=category
+class Publisher:
+    def __init__(self, publisher):
+        self.publisher=publisher
 
-class Mammal(Animal):
-    def __init__(self, category, temperature):
-        self.temperature=temperature
-        super().__init__(category)
+class Series(Publisher):
+    def __init__(self, publisher, series_name):
+        self.series_name=series_name
+        super().__init__(publisher)
 
-class Dog(Mammal):
-    def __init__(self, category, temperature, breed):
-        self.breed=breed
-        super().__init__(category,temperature)
+class Book(Series):
+    def __init__(self, publisher,series_name , title):
+        self. title= title
+        super().__init__(publisher,series_name)
 
-    def describe(self):
-        return f"This is a {self.breed}. It is a {self.temperature} {self.category}."
+    def info(self):
+        return f"{self.title} is part of the {self.series_name} series published by {self.publisher}."
 
-d1 = Dog("Animal", "Warm-blooded", "Husky")
-print( d1.describe())
+b1 = Book("Harper", "Earth Saga", "Final Planet")
+print( b1.info())

@@ -1,23 +1,19 @@
-class User:
-    def __init__(self, name, email):
-        self.name=name
-        self.email=email
+class Organization:
+    def __init__(self, company):
+        self.company=company
 
-class Instructor(User):
-    def __init__(self, name, email, course):
-        self.course=course
-        super().__init__(name, email)
+class Department(Organization):
+    def __init__(self, company, dept):
+        self.dept=dept
+        super().__init__(company)
 
-    def role(self):
-        return f"{self.name} ({self.email}) teaches {self.course}."
+class Employee(Department):
+    def __init__(self, company, dept, emp_name):
+        self.emp_name=emp_name
+        super().__init__(company, dept)
 
-class Learner(User):
-    def __init__(self, name, email, course):
-        self.course=course
-        super().__init__(name, email)
+    def get_details(self):
+        return f"{self.emp_name} works in {self.dept} department at {self.company}"
 
-    def role(self):
-        return f"{self.name} ({self.email}) is enrolled in {self.course}."
-
-i1 = Instructor("Arjun", "arjun@edu.com", "Python")
-print( i1.role())
+e1 = Employee("Innotech", "HR", "Meera")
+print(e1.get_details())
