@@ -1,23 +1,16 @@
-class Vehicle:
-    def __init__(self, brand, model):
-        self.brand=brand
-        self.model=model
+class Book:
+    def __init__(self, title, author):
+        self.title=title
+        self.author=author
 
-class Car(Vehicle):
-    def __init__(self, brand, model, doors):
-        self.doors=doors
-        super().__init__(brand,model)
+class IssuedBook(Book):
+    def __init__(self, title, author, borrower, date):
+        super().__init__(title,author)
+        self.borrower=borrower
+        self.date=date
 
-    def description(self):
-            return f"{self.brand} {self.model} with {self.doors} doors."
+    def get_summary(self):
+        return f"{self.title} by {self.author} issued to {self.borrower} on {self.date}"
 
-class Bike(Vehicle):
-    def __init__(self, brand, model, engine):
-        self.engine=engine
-        super().__init__(brand,model)
-
-    def description(self):
-        return f"{self.brand} {self.model} with {self.engine} engine."
-
-c1 = Car("Toyota", "Camry", 4)
-print( c1.description())
+b1 = IssuedBook("HP", "Rowling", "Harry", "2024-01-01")
+print( b1.get_summary())
