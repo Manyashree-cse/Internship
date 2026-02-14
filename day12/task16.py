@@ -11,5 +11,4 @@ class HybridWorker(Developer, Designer):
         self.name=name
         super().__init__()
 
-h1 = HybridWorker("Ava")
-print( h1.code())
+h1 = HybridWorker("Av
