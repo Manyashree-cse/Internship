@@ -7,8 +7,7 @@ class UserAccount:
             self.__points+=amount
 
     def get_points(self):
-        return self.__points
-
+        return self.__point
 u1 = UserAccount()
 u1.add_points(10)
 print( u1.get_points())

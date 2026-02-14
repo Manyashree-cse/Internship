@@ -10,7 +10,6 @@ class Student:
         else:
             return self._grade
         
-
 s1 = Student("Bob")
 print( s1.update_grade(20))
 print( s1.update_grade(40))

@@ -1,7 +1,6 @@
 class StudentResult:
     def __init__(self):
         self.__score=0
-
     def update_score(self, new_score):
         if new_score>self.__score:
             self.__score=new_score

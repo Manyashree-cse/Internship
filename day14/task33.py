@@ -5,8 +5,7 @@ class FlightSeat:
     def book(self):
         if not self.__is_booked:
             self.__is_booked=True
-            return "Booking successful"
-            
+            return "Booking successful" 
         else:
             return "Seat already booked"
 
