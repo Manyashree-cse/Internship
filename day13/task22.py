@@ -11,4 +11,4 @@ class Graduate(Student):
         return f"{self.name} ({self.student_id}) - {self.degree}"
 
 g1 = Graduate("Bob", "G001", "MBA")
-print( g1.get_graduate_info())
+print( g1.get_graduate_info()
