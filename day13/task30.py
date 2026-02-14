@@ -9,7 +9,6 @@ class BankAccount:
         else:
             print(f"Insufficient funds. Balance remains: {self.__balance}")
 
-
 acc = BankAccount(1000)
 acc.withdraw(200)
 acc.withdraw(900)
