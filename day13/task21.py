@@ -8,7 +8,6 @@ class IssuedBook(Book):
         super().__init__(title,author)
         self.borrower=borrower
         self.date=date
-
     def get_summary(self):
         return f"{self.title} by {self.author} issued to {self.borrower} on {self.date}"
 
