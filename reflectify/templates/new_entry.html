@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="glass-card">
+
+            <!-- Header -->
+
+            <div class="text-center mb-4">
+
+                <h2>New Journal Entry ✨</h2>
+
+                <p class="text-muted">
+                    Capture your thoughts, emotions, and memories beautifully
+                </p>
+
+            </div>
+
+            <!-- AI Prompt Box -->
+
+            <div class="prompt-box">
+
+                <div class="d-flex
+                align-items-center
+                gap-2
+                mb-2">
+
+                    <span style="font-size:22px;">
+                        🤖
+                    </span>
+
+                    <strong>
+                        AI Reflection Prompt
+                    </strong>
+
+                </div>
+
+                <div style="font-size:17px;">
+
+                    {{ prompt }}
+
+                </div>
+
+            </div>
+
+            <!-- Journal Form -->
+
+            <form method="POST"
+            enctype="multipart/form-data">
+
+                {{ form.hidden_tag() }}
+
+                <!-- Title -->
+
+                <div class="mb-3">
+
+                    {{ form.title.label(class="form-label") }}
+
+                    {{ form.title(
+                        class="form-control",
+                        placeholder="Give your memory a title..."
+                    ) }}
+
+                </div>
+
+                <!-- Content -->
+
+                <div class="mb-3">
+
+                    {{ form.content.label(class="form-label") }}
+
+                    {{ form.content(
+                        class="form-control",
+                        rows="7",
+                        placeholder="Write what’s on your mind..."
+                    ) }}
+
+                </div>
+
+                <!-- Mood -->
+
+                <div class="mb-3">
+
+                    {{ form.mood.label(class="form-label") }}
+
+                    {{ form.mood(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <!-- Image Upload -->
+
+                <div class="mb-3">
+
+                    {{ form.image.label(class="form-label") }}
+
+                    {{ form.image(
+                        class="form-control"
+                    ) }}
+
+                </div>
+
+                <!-- Audio Upload -->
+
+                <div class="mb-4">
+
+                    {{ form.audio.label(class="form-label") }}
+
+                    {{ form.audio(
+                        class="form-control"
+                    ) }}
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+                gap-3">
+
+                    <!-- Back Button -->
+
+                    <a href="{{ url_for('dashboard') }}"
+                    class="btn-custom">
+
+                        ← Back to Journal
+
+                    </a>
+
+                    <!-- Submit Button -->
+
+                    {{ form.submit(
+                        class="btn-custom"
+                    ) }}
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

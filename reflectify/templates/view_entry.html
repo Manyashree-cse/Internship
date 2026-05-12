@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <!-- Main Entry Card -->
+
+        <div class="glass-card">
+
+            <!-- Header -->
+
+            <div class="d-flex
+            justify-content-between
+            align-items-center
+            flex-wrap mb-4">
+
+                <div>
+
+                    <h1 class="mb-2">
+                        {{ entry.title }}
+                    </h1>
+
+                    <div class="entry-date">
+
+                        📅
+                        {{ entry.created_at.strftime('%d %B %Y') }}
+
+                    </div>
+
+                </div>
+
+                <!-- Mood -->
+
+                <div class="mood-badge">
+
+                    {{ entry.mood }}
+
+                </div>
+
+            </div>
+
+            <!-- Divider -->
+
+            <hr class="mb-4">
+
+            <!-- Journal Content -->
+
+            <div class="journal-content">
+
+                {{ entry.content }}
+
+            </div>
+
+            <!-- Image -->
+
+            {% if entry.image %}
+
+            <div class="mt-5">
+
+                <h5 class="mb-3">
+                    📷 Memory Snapshot
+                </h5>
+
+                <img
+                src="{{ url_for(
+                    'static',
+                    filename='uploads/' + entry.image
+                ) }}"
+                class="entry-image">
+
+            </div>
+
+            {% endif %}
+
+            <!-- Audio -->
+
+            {% if entry.audio %}
+
+            <div class="mt-5">
+
+                <h5 class="mb-3">
+                    🎤 Voice Note
+                </h5>
+
+                <audio controls>
+
+                    <source
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/' + entry.audio
+                    ) }}">
+
+                </audio>
+
+            </div>
+
+            {% endif %}
+
+            <!-- Buttons -->
+
+            <div class="d-flex
+            gap-3
+            mt-5
+            flex-wrap">
+
+                <a href="{{ url_for('dashboard') }}"
+                class="btn-custom">
+
+                    ← Back to Journal
+
+                </a>
+
+                <a href="{{ url_for('new_entry') }}"
+                class="btn-custom">
+
+                    + New Entry
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

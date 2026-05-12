@@ -1,0 +1,503 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(
+        135deg,
+        #f5f7fa,
+        #e4ecfb
+    );
+    min-height:100vh;
+    color:#333;
+}
+
+/* Navbar */
+
+.navbar{
+    background: rgba(255,255,255,0.2) !important;
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+    padding:15px 0;
+}
+
+.navbar-brand{
+    font-size:26px;
+    font-weight:600;
+    color:#4a4a4a !important;
+}
+
+/* Main Container */
+
+.main-container{
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+/* Glassmorphism Card */
+
+.glass-card{
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:
+        0 8px 32px rgba(31,38,135,0.1);
+    transition:0.3s ease;
+}
+
+.glass-card:hover{
+    transform: translateY(-5px);
+}
+
+/* Headings */
+
+h1,h2,h3,h4{
+    font-weight:600;
+    color:#2c2c2c;
+}
+
+/* Form Inputs */
+
+.form-control,
+.form-select{
+    border:none;
+    border-radius:15px;
+    padding:14px;
+    background: rgba(255,255,255,0.7);
+    box-shadow:
+        inset 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.form-control:focus,
+.form-select:focus{
+    border:none;
+    outline:none;
+    box-shadow:
+        0 0 0 3px rgba(123,104,238,0.2);
+}
+
+/* Buttons */
+
+.btn-custom{
+    background: linear-gradient(
+        135deg,
+        #7b68ee,
+        #9370db
+    );
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:14px;
+    font-weight:500;
+    transition:0.3s ease;
+}
+
+.btn-custom:hover{
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 20px rgba(123,104,238,0.3);
+}
+
+/* Prompt Box */
+
+.prompt-box{
+    background:
+        linear-gradient(
+            135deg,
+            #ffe29f,
+            #ffa99f
+        );
+
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:20px;
+    color:#5a3d2b;
+    font-weight:500;
+}
+
+/* Entry Cards */
+
+.entry-card{
+    background: rgba(255,255,255,0.45);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    transition:0.3s ease;
+    border:1px solid rgba(255,255,255,0.4);
+}
+
+.entry-card:hover{
+    transform:scale(1.02);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08);
+}
+
+.entry-date{
+    color:#777;
+    font-size:14px;
+}
+
+/* Mood Badge */
+
+.mood-badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:500;
+    margin-top:10px;
+    background:#ede9fe;
+    color:#6d28d9;
+}
+
+/* Image Styling */
+
+.entry-image{
+    width:100%;
+    border-radius:20px;
+    margin-top:15px;
+    object-fit:cover;
+}
+
+/* Audio */
+
+audio{
+    width:100%;
+    margin-top:15px;
+}
+
+/* Auth Box */
+
+.auth-container{
+    width:100%;
+    max-width:450px;
+    margin:auto;
+    margin-top:60px;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+    color:#7b68ee;
+}
+
+a:hover{
+    color:#5b4bc4;
+}
+
+/* Alerts */
+
+.alert{
+    border-radius:15px;
+    border:none;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#c4b5fd;
+    border-radius:20px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .glass-card{
+        padding:20px;
+    }
+
+    .navbar-brand{
+        font-size:22px;
+    }
+
+}
+/* Journal Content */
+
+.journal-content{
+    font-size:18px;
+    line-height:1.9;
+    color:#444;
+    white-space:pre-line;
+    padding:10px 0;
+}
+
+/* Divider */
+
+hr{
+    border:none;
+    height:1px;
+    background:rgba(0,0,0,0.08);
+}
+
+/* Better Image */
+
+.entry-image{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    border-radius:24px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+}
+
+.entry-image:hover{
+    transform:scale(1.01);
+}
+
+/* Audio Player */
+
+audio{
+    width:100%;
+    border-radius:20px;
+}
+
+/* Smooth Animation */
+
+.glass-card{
+    animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+/* AI Prompt Box */
+
+.prompt-box{
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.7),
+        rgba(240,240,255,0.6)
+    );
+
+    border-radius:24px;
+
+    padding:24px;
+
+    margin-bottom:25px;
+
+    overflow:hidden;
+
+    border:
+    1px solid rgba(255,255,255,0.5);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 8px 30px rgba(0,0,0,0.06);
+}
+
+/* AI Header */
+
+.ai-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:15px;
+
+    font-weight:600;
+
+    color:#6d28d9;
+}
+
+/* Animated Dot */
+
+.ai-dot{
+
+    width:12px;
+    height:12px;
+
+    background:#8b5cf6;
+
+    border-radius:50%;
+
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.4);
+        opacity:0.5;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* Prompt Text */
+
+.ai-prompt-text{
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    color:#333;
+
+    font-weight:500;
+}
+
+/* Floating Glow */
+
+.prompt-box::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:
+    rgba(139,92,246,0.12);
+
+    border-radius:50%;
+
+    top:-70px;
+    right:-70px;
+}
+/* AI Prompt Box */
+
+.prompt-box{
+    background:
+    linear-gradient(
+        135deg,
+        #ffe29f,
+        #ffa99f
+    );
+
+    padding:22px;
+    border-radius:24px;
+    margin-bottom:25px;
+    color:#5a3d2b;
+    font-weight:500;
+    position:relative;
+    overflow:hidden;
+    box-shadow:
+        0 8px 20px rgba(255,170,150,0.2);
+}
+
+/* Glow Effect */
+
+.prompt-box::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    background:
+    rgba(255,255,255,0.2);
+
+    border-radius:50%;
+
+    top:-90px;
+    right:-90px;
+}
+
+/* Textarea */
+
+textarea.form-control{
+    resize:none;
+}
+
+/* Better File Inputs */
+
+input[type="file"]{
+    padding:12px;
+}
+
+/* Form Labels */
+
+.form-label{
+    font-weight:500;
+    margin-bottom:8px;
+    color:#444;
+}
+
+/* Smooth Button Hover */
+
+.btn-custom{
+    cursor:pointer;
+}
+
+.btn-custom:hover{
+    transform:translateY(-2px);
+}
+/* Delete Button */
+
+.delete-btn{
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff6b6b,
+        #ff4d4d
+    );
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:14px;
+
+    font-weight:500;
+
+    text-decoration:none;
+
+    transition:0.3s ease;
+}
+
+.delete-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(255,77,77,0.3);
+
+    color:white;
+}

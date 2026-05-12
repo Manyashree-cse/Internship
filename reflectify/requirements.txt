@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+pymysql
+cryptography
+email-validator
+Werkzeug
+google-generativeai
+python-dotenv
