@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <!-- PROFILE IMAGE -->
+
+        <img 
+            src="{{ url_for(
+                'static',
+                filename='uploads/' + user.profile_pic
+            ) }}"
+            class="profile-large"
+        >
+
+        <!-- UPLOAD FORM -->
+
+        {% if current_user.is_authenticated and current_user.id == user.id %}
+
+        <form
+            action="/upload_profile_pic"
+            method="POST"
+            enctype="multipart/form-data"
+            class="upload-form"
+        >
+
+            <input
+                type="file"
+                name="profile_pic"
+                required
+            >
+
+            <button type="submit">
+
+                Upload Picture
+
+            </button>
+
+        </form>
+
+        {% endif %}
+
+        <!-- USER INFO -->
+
+        <h1>{{ user.username }}</h1>
+
+        <p>{{ user.bio }}</p>
+
+        <!-- STATS -->
+
+        <div class="profile-stats">
+
+            <div>
+
+                <h3>{{ user.posts|length }}</h3>
+
+                <p>Posts</p>
+
+            </div>
+
+            <div>
+
+                <h3>{{ user.comments|length }}</h3>
+
+                <p>Comments</p>
+
+            </div>
+
+            <div>
+
+                <h3>{{ user.likes|length }}</h3>
+
+                <p>Likes</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- USER POSTS -->
+
+<div class="user-posts">
+
+    <h2>User Posts</h2>
+
+    {% for post in user.posts %}
+
+    <div class="post-card">
+
+        <p>{{ post.content }}</p>
+
+        <div class="post-actions">
+
+            <span>
+
+                ❤️ {{ post.likes|length }}
+
+            </span>
+
+            <span>
+
+                💬 {{ post.comments|length }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

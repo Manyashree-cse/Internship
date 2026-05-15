@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="create-page">
+
+    <div class="create-post-box">
+
+        <h1>Create New Post</h1>
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            {{ form.content(
+                class='form-control textarea',
+                placeholder='Share your thoughts...'
+            ) }}
+
+            {{ form.submit(class='btn create-btn') }}
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

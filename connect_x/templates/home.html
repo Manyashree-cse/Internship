@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="home-container">
+
+    <!-- CREATE POST -->
+
+    {% if current_user.is_authenticated %}
+
+    <div class="create-post-card">
+
+        <form
+            method="POST"
+            action="{{ url_for('posts.create_post') }}"
+            enctype="multipart/form-data"
+        >
+
+            <div class="post-user-info">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/' + current_user.profile_pic
+                    ) }}"
+                    class="profile-pic"
+                >
+
+                <h3>
+
+                    {{ current_user.username }}
+
+                </h3>
+
+            </div>
+
+            <!-- POST CONTENT -->
+
+            <textarea
+                name="content"
+                placeholder="What's happening on ConnectX?"
+                required
+            ></textarea>
+
+            <!-- IMAGE INPUT -->
+
+            <div class="file-upload-wrapper">
+
+                <input
+                    type="file"
+                    name="image"
+                >
+
+            </div>
+            <!-- SUBMIT BUTTON -->
+
+            <button
+                type="submit"
+                class="post-btn"
+            >
+
+                Create Post
+
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endif %}
+
+    <!-- POSTS FEED -->
+
+    <div class="feed-container">
+
+        {% for post in posts %}
+
+        <div class="post-card">
+
+            <!-- POST HEADER -->
+
+            <div class="post-header">
+
+                <div class="profile-section">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='uploads/' + post.author.profile_pic
+                        ) }}"
+                        class="profile-pic"
+                    >
+
+                    <div>
+
+                        <h3>
+
+                            <a
+                                href="{{ url_for(
+                                    'main.profile',
+                                    user_id=post.author.id
+                                ) }}"
+                                class="username-link"
+                            >
+
+                                {{ post.author.username }}
+
+                            </a>
+
+                        </h3>
+
+                        <small>
+
+                            {{ post.created_at.strftime('%d %b %Y • %I:%M %p') }}
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- POST CONTENT -->
+
+            <div class="post-content">
+
+                <p>
+
+                    {{ post.content }}
+
+                </p>
+
+                <!-- POST IMAGE -->
+
+                {% if post.image %}
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/posts/' + post.image
+                    ) }}"
+                    class="post-image"
+                >
+
+                {% endif %}
+
+            </div>
+
+            <!-- POST ACTIONS -->
+
+            <div class="post-actions">
+
+                <!-- LIKE -->
+
+                <a
+                    href="{{ url_for(
+                        'posts.like_post',
+                        post_id=post.id
+                    ) }}"
+                    class="action-btn"
+                >
+
+                    ❤️ {{ post.likes|length }}
+
+                </a>
+
+                <!-- COMMENTS -->
+
+                <span class="action-btn">
+
+                    💬 {{ post.comments|length }}
+
+                </span>
+
+            </div>
+
+            <!-- COMMENTS SECTION -->
+
+            <div class="comments-section">
+
+                {% for comment in post.comments %}
+
+                <div class="comment-box">
+
+                    <strong>
+
+                        {{ comment.user.username }}
+
+                    </strong>
+
+                    <p>
+
+                        {{ comment.text }}
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+                <!-- ADD COMMENT -->
+
+                {% if current_user.is_authenticated %}
+
+                <form
+                    method="POST"
+                    action="{{ url_for(
+                        'posts.comment',
+                        post_id=post.id
+                    ) }}"
+                    class="comment-form"
+                >
+
+                    <input
+                        type="text"
+                        name="comment"
+                        placeholder="Write a comment..."
+                        required
+                    >
+
+                    <button type="submit">
+
+                        Post
+
+                    </button>
+
+                </form>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

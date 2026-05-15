@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <h1>Welcome Back 👋</h1>
+
+        <p class="subtitle">
+            Login to ConnectX
+        </p>
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            <!-- EMAIL -->
+            <div class="form-group">
+
+                {{ form.email(
+                    class='form-control',
+                    placeholder='Email Address'
+                ) }}
+
+                {% for error in form.email.errors %}
+                    <small class="text-danger">
+                        {{ error }}
+                    </small>
+                {% endfor %}
+
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-group">
+
+                {{ form.password(
+                    class='form-control',
+                    placeholder='Password'
+                ) }}
+
+                {% for error in form.password.errors %}
+                    <small class="text-danger">
+                        {{ error }}
+                    </small>
+                {% endfor %}
+
+            </div>
+
+            <!-- LOGIN BUTTON -->
+            {{ form.submit(
+                class='btn auth-btn'
+            ) }}
+
+        </form>
+
+        <!-- FORGOT PASSWORD -->
+        <div class="text-center mt-3">
+
+            <a class="forgot-link"
+               href="{{ url_for('auth.forgot_password') }}">
+
+                Forgot Password?
+
+            </a>
+
+        </div>
+
+        <!-- SIGNUP LINK -->
+        <div class="text-center mt-3">
+
+            <p>
+                Don't have an account?
+
+                <a href="{{ url_for('auth.register') }}">
+                    Sign Up
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

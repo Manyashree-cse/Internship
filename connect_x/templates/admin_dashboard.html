@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="dashboard-title">
+
+    Admin Dashboard
+
+</h1>
+
+<!-- STATS -->
+
+<div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+        <h2>Total Users</h2>
+
+        <p>{{ users|length }}</p>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Total Posts</h2>
+
+        <p>{{ posts|length }}</p>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Total Comments</h2>
+
+        <p>{{ comments|length }}</p>
+
+    </div>
+
+</div>
+
+<!-- POSTS -->
+
+<div class="manage-posts">
+
+    <h2>Manage Posts</h2>
+
+    {% for post in posts %}
+
+    <div class="post-card">
+
+        <div class="post-header">
+
+            <div class="profile-section">
+
+                <img
+                    src="{{ url_for('static', filename='images/default.png') }}"
+                    class="profile-pic"
+                >
+
+                <div>
+
+                    <h3>{{ post.author.username }}</h3>
+
+                    <small>
+
+                        {{ post.created_at.strftime('%d %b %Y') }}
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="post-content">
+
+            <p>{{ post.content }}</p>
+
+        </div>
+
+        <div class="post-actions">
+
+            <span>
+
+                ❤️ {{ post.likes|length }}
+
+            </span>
+
+            <span>
+
+                💬 {{ post.comments|length }}
+
+            </span>
+
+        </div>
+
+        <a
+            href="/delete_post/{{ post.id }}"
+            class="delete-btn"
+        >
+
+            Delete Post
+
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<!-- COMMENTS -->
+
+<div class="manage-comments">
+
+    <h2>Manage Comments</h2>
+
+    {% for comment in comments %}
+
+    <div class="comment-box">
+
+        <div class="comment-user">
+
+            <strong>
+
+                {{ comment.user.username }}
+
+            </strong>
+
+            <small>
+
+                {{ comment.created_at.strftime('%d %b %Y') }}
+
+            </small>
+
+        </div>
+
+        <p>{{ comment.text }}</p>
+
+        <a
+            href="/delete_comment/{{ comment.id }}"
+            class="delete-btn"
+        >
+
+            Delete Comment
+
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

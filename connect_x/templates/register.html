@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <h1>Create Account</h1>
+
+        <p>Join ConnectX today</p>
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            {{ form.username(
+                class='form-control',
+                placeholder='Username'
+            ) }}
+
+            {{ form.email(
+                class='form-control',
+                placeholder='Email Address'
+            ) }}
+
+            {{ form.password(
+                class='form-control',
+                placeholder='Password'
+            ) }}
+
+            {{ form.submit(
+                class='btn auth-btn'
+            ) }}
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
